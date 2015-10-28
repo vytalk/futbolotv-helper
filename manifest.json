@@ -12,7 +12,8 @@
    "content_scripts": [
     {
       "matches": ["http://www.futbolo.tv/*"],
-      "js": ["jquery.min.js", "football.js"]
+      "js": ["jquery.min.js", "handlebars.js", "football.js"]
     }
-  ]
+  ],
+   "web_accessible_resources": ["teambox.html"]
 }

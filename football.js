@@ -9,12 +9,12 @@ $(document).ready(function() {
 	}
 
 	var teams = Utils.extractTeams();
-    console.log(teams);
-
+    Utils.generate(teams);
+    
 });
 
 var Utils = {
-	extractTeams : {
+	extractTeams : function() {
 		var result = [];
 		var teamsPushed = [];
 		$.each($(".match-day .team-h a"), function(index, element) {
@@ -27,6 +27,14 @@ var Utils = {
 			}
 		});
 		return result;
+	},
+
+	generate : function(teams) {
+		$.get(chrome.extension.getURL("teambox.html"), function(data) {
+			var template = Handlebars.compile(data);
+			var html = template({list : teams});
+			console.log(html);
+		});
 	}
 }
 
