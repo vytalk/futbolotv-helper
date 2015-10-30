@@ -11,8 +11,9 @@
   },
    "content_scripts": [
     {
-      "matches": ["http://www.futbolo.tv/*"],
-      "js": ["jquery.min.js", "handlebars.js", "football.js"]
+      "matches": ["http://www.futbolo.tv/cempionatai/*", "http://futbolo.tv/cempionatai/*"],
+      "js": ["jquery.min.js", "handlebars.js", "football.js"],
+      "css": ["football.css"]
     }
   ],
    "web_accessible_resources": ["teambox.html"]

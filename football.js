@@ -33,7 +33,19 @@ var Utils = {
 		$.get(chrome.extension.getURL("teambox.html"), function(data) {
 			var template = Handlebars.compile(data);
 			var html = template({list : teams});
-			console.log(html);
+			$("body").append(html);
+			$(".box-team").click(function() {
+				var teamName = $(this).find("img").attr("alt");
+				var elementsToShow = [];
+				$.each($(".match-day tr"), function(index, element) {
+					var currentTeams = $(element).find(".team-embl img");
+					if (currentTeams && currentTeams.length > 0 && ($(currentTeams[0]).attr("alt") === teamName || $(currentTeams[1]).attr("alt") === teamName)) {
+						$(element).show();
+					} else {
+						$(element).hide();	
+					}
+				});
+			});
 		});
 	}
 }
