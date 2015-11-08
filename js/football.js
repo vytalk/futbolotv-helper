@@ -58,7 +58,7 @@ var FootballTvHelper = function() {
 	};
 
 	var generateList = function(teams) {
-		$.get(chrome.extension.getURL("teambox.html"), function(data) {
+		$.get(chrome.extension.getURL("tmpl/teambox.html"), function(data) {
 
 			var template = Handlebars.compile(data);
 			var html = template({list : teams});
