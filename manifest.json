@@ -15,5 +15,5 @@
       "css": ["css/football.css"]
     }
   ],
-   "web_accessible_resources": ["tmpl/teambox.html"]
+   "web_accessible_resources": ["tmpl/teambox.html", "img/icon.png"]
 }

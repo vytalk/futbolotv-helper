@@ -35,6 +35,13 @@ var FootballTvHelper = function() {
 		});
 	};
 
+	this.showAllMatches = function() {
+		$.each($(".match-day tr"), function(index, element) {
+			$(element).show();
+		});
+		self.scrollToComingGames();
+	};
+
 	var self = this;
 
 	var Team = function(name, img) {
@@ -58,16 +65,18 @@ var FootballTvHelper = function() {
 	};
 
 	var generateList = function(teams) {
+		var logoUrl = chrome.extension.getURL("img/icon.png");
 		$.get(chrome.extension.getURL("tmpl/teambox.html"), function(data) {
-
 			var template = Handlebars.compile(data);
-			var html = template({list : teams});
+			var html = template({logo: logoUrl, list : teams});
 			$("body").append(html);
-
 			$(".box-team").click(function() {
 				var teamName = $(this).find("img").attr("alt");
 				self.showTeamMatches(teamName);
-			});
+			});	
+			$(".all-teams").click(function() {
+				self.showAllMatches();
+			});			
 		});
 	};
 
